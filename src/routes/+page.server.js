@@ -9,10 +9,7 @@ export const load = async () => {
 
 export const actions = {
     create: async ({ cookies, request }) => {
-        const data = await request.formData();
-        const title = data.get('title');
-        const price = data.get('price');
-        const note = data.get('note');
+        const {title,price,note} = Object.fromEntries(await request.formData());
         const query = db.prepare('INSERT INTO ListTable (Title, Price, Note) VALUES ($title, $price, $note)');
         query.run(title, price, note);
     }
