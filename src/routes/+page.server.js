@@ -10,7 +10,7 @@ export async function load() {
 export const actions = {
     create: async ({ cookies, request }) => {
         const { title, price, note } = Object.fromEntries(await request.formData());
-        await sql`INSERT INTO CART (Title, Price, Note, Status, Date) VALUES (${title}, ${price}, ${note}, 0, to_char(now(), 'YYYY-MM-DD'))`;
+        await sql`INSERT INTO CART (Title, Price, Note, Status, add_date) VALUES (${title}, ${price}, ${note}, 0, now())`;
         return {
             cart: await sql`SELECT * from CART `
         }

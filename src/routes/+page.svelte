@@ -25,11 +25,11 @@ import { enhance } from "$app/forms";
     </tr>
     {#each data.cart as item}
         <tr>
-            <td>{item.ID}</td>
-            <td>{item.Title}</td>
-            <td>{item.Price}</td>
-            <td>{item.Status}</td>
-            <td>{item.Date}</td>
+            <td>{item.id}</td>
+            <td>{item.title}</td>
+            <td>{item.price}</td>
+            <td>{item.status}</td>
+            <td>{item.add_date}</td>
   
         </tr>
     {/each}
