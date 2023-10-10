@@ -36,7 +36,7 @@
                                 >Mark As Completed</button
                             >
                             <button
-                            class="ms-2 btn btn-lg btn-outline-dark disabled"
+                            class="ms-2 btn btn-lg btn-outline-dark  "
                              type="button">open Note</button
                         >
                         </form>

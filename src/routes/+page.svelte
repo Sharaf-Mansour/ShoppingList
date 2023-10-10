@@ -12,5 +12,5 @@ let date = new Date().toLocaleDateString();
 <button type="submit">Submit</button>
 </form> 
 {#each data.cart as item }
-<Card {date} title={item.title} price={item.price} note={item.note} status={item.status} />
+<Card {date} id={item.id} title={item.title} price={item.price} note={item.note} status={item.status} />
 {/each}

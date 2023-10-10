@@ -28,13 +28,13 @@ export const actions = {
     undo: async ({ cookies, request }) => {
         const {id} = Object.fromEntries(await request.formData());
 
-        await sql`UPDATE CART SET Status = 1 WHERE ID = ${id}`;
+        await sql`UPDATE CART SET Status = 1 WHERE ID = ${parseInt(id)}`;
    
     },
     complete:async ({ cookies, request }) => {
         const {id} = Object.fromEntries(await request.formData());
-        
-        await sql`UPDATE CART SET Status = 0 WHERE ID = ${id}`;
+
+        await sql`UPDATE CART SET Status = 0 WHERE ID = ${parseInt(id)}`;
       
     },
     pin: async ({ cookies, request }) => {
