@@ -1,4 +1,5 @@
 <script>
+    import { enhance } from "$app/forms";
     export let id, date, title, price, note, status;
     $: IsComplete = status == 0;
 </script>
@@ -18,7 +19,7 @@
             </span>
             <div class="text-end align-content-end col-2">
                 {#if status == 2}
-                    <form method="POST" action="?/undo">
+                    <form method="POST" action="?/undo" use:enhance>
                         <input type="hidden" name="id" value={id} />
                         <button type="submit" class="button">
                             <svg
@@ -61,7 +62,7 @@
                         </button>
                     </form>
                 {:else if status == 1}
-                    <form method="POST" action="?/pin">
+                    <form method="POST" action="?/pin" use:enhance>
                         <input type="hidden" name="id" value={id} />
                         <button type="submit" class="button">
                             <svg
@@ -114,7 +115,7 @@
             <div class="row g-0">
                 <div class="col">
                     {#if !IsComplete}
-                        <form method="POST" action="?/complete">
+                        <form method="POST" action="?/complete" use:enhance>
                             <input type="hidden" name="id" value={id} />
                             <button class="btn fs-13 btn-lg btn-secondary"
                                 >Mark As Completed</button
@@ -125,7 +126,7 @@
                             >
                         </form>
                     {:else}
-                        <form method="POST" action="?/undo">
+                        <form method="POST" action="?/undo" use:enhance>
                             <input type="hidden" name="id" value={id} />
                             <button
                                 class="btn fs-13 btn-lg btn-primary"
