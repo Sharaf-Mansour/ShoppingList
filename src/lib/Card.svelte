@@ -14,7 +14,7 @@
  
 </style>
 
-<div class="col-12 col-sm-4 col-md-4 g-0">
+<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 g-0">
     <div class="card m-2 p-4">
         <div class="row g-0 p-0 m-0">
             <span class="text-dark col-10 fs-10">
