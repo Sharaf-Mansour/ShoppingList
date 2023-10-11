@@ -38,7 +38,8 @@ export const actions = {
       
     },
     pin: async ({ cookies, request }) => {
-        await sql`UPDATE CART SET Status = 2 WHERE ID = ${params.id}`;
-       
+        const {id} = Object.fromEntries(await request.formData());
+
+        await sql`UPDATE CART SET Status = 2 WHERE ID = ${parseInt(id)}`;
     }
 }
