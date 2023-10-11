@@ -2,7 +2,7 @@
     font-family: PT Sans, sans-serif;
 }
 
-body {
+body,#splash-screen {
     background: #f45050 !important;
     background-image: url('pc pattern.png') !important;
     background-repeat: repeat !important;
@@ -78,7 +78,11 @@ body {
 .fs-19 {
     font-size: 19px !important;
 }
-
+img {
+    position: absolute;
+    width: 30%;
+    bottom: 0;
+ }
 @media screen and (max-width: 768px) {
     .fs-10 {
         font-size: 8px !important;
@@ -96,9 +100,14 @@ body {
         font-size: 16px !important;
     }
 
-    body {
+    body,#splash-screen  {
         background: #f45050 !important;
         background-image: url('mobile pattern.png') !important;
         background-repeat: repeat !important;
     }
+    img {
+        position: absolute;
+        width: 70% !important;
+        bottom: 0;
+     }
 }
