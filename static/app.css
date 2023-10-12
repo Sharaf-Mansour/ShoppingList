@@ -1,11 +1,19 @@
 * {
     font-family: PT Sans, sans-serif;
 }
+:root {
+--primary: rgb(255, 75, 75); 
+--secondary:rgb(27, 122, 152); 
+--dark: rgb(52, 52, 52);
+}
 
 body,#splash-screen {
-    background: #f45050 !important;
+    background: var(--primary) !important;
     background-image: url('pc pattern.png') !important;
     background-repeat: repeat !important;
+}
+.modal{
+    background-color: rgba(255, 75, 75, 0.75); 
 }
 .button {
     background-color: transparent ;
@@ -16,44 +24,44 @@ body,#splash-screen {
 }
 
 .text-primary {
-    color: #f45050 !important;
+    color: var(--primary) !important;
 }
 
 .bg-primary {
-    background: #f45050 !important;
+    background: var(--primary) !important;
 }
 
 .text-secondary {
-    color: #22668D !important;
+    color: var(--secondary)!important;
 }
 
 .bg-secondary {
-    background: #22668D !important;
+    background: var(--secondary)!important;
 }
 
 .text-dark {
-    color: #272829 !important;
+    color: var(--dark) !important;
 }
 
 .bg-dark {
-    background: #272829 !important;
+    background: var(--dark) !important;
 }
 
 .btn-primary {
-    background: #f45050 !important;
-    border-color: #f45050 !important;
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
     color: #fff !important;
 }
 
 .btn-secondary {
-    background: #22668D !important;
-    border-color: #22668D !important;
+    background: var(--secondary)!important;
+    border-color: var(--secondary)!important;
     color: #fff !important;
 }
 
 .btn-outline-dark {
-    color: #272829 !important;
-    border-color: #272829 !important;
+    color: var(--dark) !important;
+    border-color: var(--dark) !important;
     background: transparent !important;
 }
 
@@ -83,7 +91,7 @@ body,#splash-screen {
 }
 img {
     position: absolute;
-    width: 30%;
+    width: 27%;
     bottom: 0;
  }
 @media screen and (max-width: 768px) {
@@ -104,13 +112,13 @@ img {
     }
 
     body,#splash-screen  {
-        background: #f45050 !important;
+        background: var(--primary) !important;
         background-image: url('mobile pattern.png') !important;
         background-repeat: repeat !important;
     }
     img {
         position: absolute;
-        width: 70% !important;
+        width: 75% !important;
         bottom: 0;
      }
      .modal-dialog {
