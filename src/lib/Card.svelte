@@ -152,9 +152,4 @@
     </div>
 </div>
 
-<style>
-    .button {
-        background-color: transparent;
-        border: none;
-    }
-</style>
+ 
