@@ -1,13 +1,14 @@
 <script>
     import Card from "$lib/Card.svelte";
     import Modal from "$lib/Modal.svelte";
-    import { show,setShow } from "$lib/stores.js";
+    import { setShow } from "$lib/stores.js";
     import { enhance } from "$app/forms";
     export let data;
     $: array = data.cart.sort((b, a) => a.status - b.status);
     $: firstItem = array[0];
     let date = new Date().toLocaleDateString();
- </script>
+</script>
+
 <form method="POST" action="?/create" use:enhance>
     <input type="text" name="title" placeholder="title" />
     <input type="number" name="price" placeholder="price" />
