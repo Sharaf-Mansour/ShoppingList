@@ -1,14 +1,15 @@
 <script>
     import { enhance } from "$app/forms";
-    export let id, date, title, price, note, status;
+ import {setCart}    from "$lib/stores.js";
+    export let id, add_date, title, price, note, status;
     $: IsComplete = status == 0;
 </script>
 
-<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3 g-0">
-    <div class="card m-2 p-4">
+<div class="col-12 col-sm-12col-md-6 col-lg-4 col-xl-4 col-xxl-3 g-0">
+    <div class="card  bg-light  m-2 p-4">
         <div class="row g-0 p-0 m-0">
             <span class="text-dark col-10 fs-10">
-                {date}
+                {add_date.toLocaleDateString('en-UK')}
                 <h1
                     class:middle-stroke={IsComplete}
                     class:disabled={IsComplete}
@@ -122,7 +123,7 @@
                             >
                             <button
                                 class="ms-2 fs-13 btn btn-lg btn-outline-dark"
-                                type="button">open Note</button
+                                type="button" on:click={() => setCart(  {id,add_date, title, price, note, status})}>open Note</button
                             >
                         </form>
                     {:else}
@@ -134,7 +135,7 @@
                             >
                             <button
                                 class="ms-2 fs-13 btn btn-lg btn-outline-dark"
-                                type="button">open Note</button
+                                type="button" on:click={() => setCart({id, add_date, title, price, note, status})}>open Note</button
                             >
                         </form>
                     {/if}
@@ -152,4 +153,3 @@
     </div>
 </div>
 
- 

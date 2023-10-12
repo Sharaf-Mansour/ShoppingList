@@ -1,11 +1,11 @@
 <script>
     import Card from "$lib/Card.svelte";
     import Modal from "$lib/Modal.svelte";
-    import { setShow } from "$lib/stores.js";
+    import { setShow,cart } from "$lib/stores.js";
     import { enhance } from "$app/forms";
     export let data;
     $: array = data.cart.sort((b, a) => a.status - b.status);
-    $: firstItem = array[0];
+    $: firstItem = $cart;
     let date = new Date().toLocaleDateString();
 </script>
 
@@ -18,7 +18,7 @@
 <div class="row m-2">
     {#each array as item (item.id)}
         <Card
-            {date}
+        add_date = {item.add_date}
             id={item.id}
             title={item.title}
             price={item.price}
@@ -29,7 +29,7 @@
 </div>
 <button class="btn btn-info" on:click={() => setShow()}>Show Modal</button>
 <Modal
-    {date}
+add_date = {firstItem.add_date}
     id={firstItem.id}
     title={firstItem.title}
     price={firstItem.price}

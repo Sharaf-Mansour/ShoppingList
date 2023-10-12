@@ -5,8 +5,11 @@
 --primary: rgb(255, 75, 75); 
 --secondary:rgb(27, 122, 152); 
 --dark: rgb(52, 52, 52);
+--light: rgb(225, 225, 225);
 }
-
+.bg-light {
+    background: var(--light) !important;
+}
 body,#splash-screen {
     background: var(--primary) !important;
     background-image: url('pc pattern.png') !important;
@@ -20,9 +23,12 @@ body,#splash-screen {
     border: none ;
 }
 .card {
-    border-radius: 15px !important;
+    border-radius: 10px !important;
 }
+.modal-body{
+    border-radius: 20px !important;
 
+}
 .text-primary {
     color: var(--primary) !important;
 }
@@ -110,7 +116,10 @@ img {
     .fs-19 {
         font-size: 16px !important;
     }
-
+    .modal-content{
+        border-radius: 10px !important;
+    
+    }
     body,#splash-screen  {
         background: var(--primary) !important;
         background-image: url('mobile pattern.png') !important;
@@ -124,14 +133,12 @@ img {
      .modal-dialog {
         position:fixed;
         top:auto;
-        right:auto;
-        left:auto;
-        bottom:0;
-        width: 100%;
-        margin:0;
+        right:10px;
+        left:10px;
+        bottom:10px;
+        width: 90%;
+        margin-bottom:10px;
         min-height: 0;
-
-     
      }  
      *{
         max-width: none !important;

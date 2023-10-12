@@ -2,13 +2,13 @@
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
    import { show, setShow } from "$lib/stores.js";
-   export let id, date, title, price, note, status;
+   export let id, add_date, title, price, note, status;
    $: IsComplete = status == 0;
 </script>
 
 {#if $show}
    <div
-      class=" modal d-block"
+      class=" modal  d-block"
       transition:fly={{ delay: 250, duration: 500 }}
       id="staticBackdrop"
       data-bs-backdrop="static"
@@ -17,12 +17,12 @@
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
    >
-      <div class="modal-dialog modal-dialog-centered">
-         <div class="modal-content">
-            <div class="modal-body">
+      <div class="modal-dialog  modal-dialog-centered">
+         <div class="modal-content  bg-light ">
+            <div class="modal-body ">
                <div class="row g-0 p-0 m-0">
                   <span class="text-dark col-10 fs-10">
-                     {date}
+                     {add_date.toLocaleDateString()}
                      <h1
                         class:middle-stroke={IsComplete}
                         class:disabled={IsComplete}
@@ -130,3 +130,4 @@
       </div>
    </div>
 {/if}
+
