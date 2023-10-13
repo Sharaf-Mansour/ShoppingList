@@ -2,9 +2,8 @@
     import Card from "$lib/Card.svelte";
     import Modal from "$lib/Modal.svelte";
     import ModalCreate from "$lib/ModalCreate.svelte";
-    import { setShow, cart, setShowCreate } from "$lib/stores.js";
+    import { cart, setShowCreate } from "$lib/stores.js";
     import { onMount } from "svelte";
-
     export let data;
     let time;
     onMount(() => {
@@ -19,18 +18,11 @@
             clearInterval(intervalId);
         };
     });
-
     $: array = data.cart.sort((b, a) => a.status - b.status);
     $: firstItem = $cart;
     let date = new Date().toLocaleDateString("en-UK");
 </script>
 
-<!-- <form method="POST" action="?/create" use:enhance>
-    <input type="text" name="title" placeholder="title" />
-    <input type="number" name="price" placeholder="price" />
-    <input type="text" name="note" placeholder="note" />
-    <button type="submit">Submit</button>
-</form> -->
 <div class="m-3 main-header d-flex justify-content-between">
     <div class="header">
         <span class="header-title me-4">{date}</span>
@@ -93,7 +85,6 @@
         />
     {/each}
 </div>
-<button class="btn btn-info" on:click={() => setShow()}>Show Modal</button>
 <Modal
     add_date={firstItem.add_date}
     id={firstItem.id}
@@ -102,4 +93,4 @@
     note={firstItem.note}
     status={firstItem.status}
 />
-<ModalCreate></ModalCreate>
+<ModalCreate />
