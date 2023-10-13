@@ -1,9 +1,9 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { show, setShow } from "$lib/stores.js";
-   export let id, add_date, title, price, note, status;
-   $: IsComplete = status == 0;
+   import { show, setShow, cart } from "$lib/stores.js";
+   $: item = $cart;
+   $: IsComplete = item.status == 0;
 </script>
 
 {#if $show}
@@ -22,13 +22,13 @@
             <div class="modal-body">
                <div class="row g-0 p-0 m-0">
                   <span class="text-dark col-10 fs-10">
-                     {add_date.toLocaleDateString()}
+                     {item.add_date.toLocaleDateString()}
                      <h1
                         class:middle-stroke={IsComplete}
                         class:disabled={IsComplete}
                         class="text-primary fs-19"
                      >
-                        {title}
+                        {item.title}
                      </h1>
                   </span>
                   <div class="text-end align-content-end col-2">
@@ -80,7 +80,7 @@
                   class:disabled={IsComplete}
                   class="text-dark fs-16"
                >
-                  {note}
+                  {item.note}
                </p>
 
                <div class="row g-0">
@@ -89,7 +89,7 @@
                   >
                      {#if !IsComplete}
                         <form method="POST" action="?/complete" use:enhance>
-                           <input type="hidden" name="id" value={id} />
+                           <input type="hidden" name="id" value={item.id} />
                            <button class="btn fs-13 btn-lg btn-secondary"
                               >Mark As Completed</button
                            >
@@ -102,7 +102,7 @@
                         </form>
                      {:else}
                         <form method="POST" action="?/undo" use:enhance>
-                           <input type="hidden" name="id" value={id} />
+                           <input type="hidden" name="id" value={item.id} />
                            <button
                               class="btn fs-13 btn-lg btn-primary"
                               type="submit">Undo Note</button
@@ -121,7 +121,7 @@
                         class="text-secondary fs-16"
                         class:disabled={IsComplete}
                      >
-                        {price} EGP
+                        {item.price} EGP
                      </h2>
                   </div>
                </div>
