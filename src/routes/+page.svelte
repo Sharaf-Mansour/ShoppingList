@@ -2,7 +2,7 @@
     import Card from "$lib/Card.svelte";
     import Modal from "$lib/Modal.svelte";
     import ModalCreate from "$lib/ModalCreate.svelte";
-    import { cart, setShowCreate } from "$lib/stores.js";
+    import { setShowCreate } from "$lib/stores.js";
     import { onMount } from "svelte";
     export let data;
     let time;
@@ -19,7 +19,6 @@
         };
     });
     $: array = data.cart.sort((b, a) => a.status - b.status);
-    $: firstItem = $cart;
     let date = new Date().toLocaleDateString("en-UK");
 </script>
 
@@ -85,12 +84,5 @@
         />
     {/each}
 </div>
-<Modal
-    add_date={firstItem.add_date}
-    id={firstItem.id}
-    title={firstItem.title}
-    price={firstItem.price}
-    note={firstItem.note}
-    status={firstItem.status}
-/>
+<Modal />
 <ModalCreate />
