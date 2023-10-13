@@ -1,11 +1,11 @@
 <script>
-    import { enhance } from "$app/forms";
- import {setCart}    from "$lib/stores.js";
-    export let id, add_date, title, price, note, status;
-    $: IsComplete = status == 0;
+import { enhance } from "$app/forms";
+import {setCart}    from "$lib/stores.js";
+export let id, add_date, title, price, note, status;
+$: IsComplete = status == 0;
 </script>
 
-<div class="col-12 col-sm-12col-md-6 col-lg-4 col-xl-4 col-xxl-3 g-0">
+<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 g-0">
     <div class="card  bg-light  m-2 p-4">
         <div class="row g-0 p-0 m-0">
             <span class="text-dark col-10 fs-10">
@@ -13,7 +13,7 @@
                 <h1
                     class:middle-stroke={IsComplete}
                     class:disabled={IsComplete}
-                    class="text-primary fs-19"
+                    class="text-primary fs-19 text-crop"                 
                 >
                     {title}
                 </h1>
@@ -104,10 +104,7 @@
             <p
                 class:middle-stroke={IsComplete}
                 class:disabled={IsComplete}
-                class="text-dark fs-16"
-                style="text-overflow: ellipsis; -webkit-line-clamp: 2;  width: 100%; /* Adjust the width to your needs */
-                white-space: nowrap;
-                overflow: hidden;"
+                class="text-dark fs-16 text-crop"
             >
                 {note}
             </p>

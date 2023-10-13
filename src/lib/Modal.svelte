@@ -8,7 +8,7 @@
 
 {#if $show}
    <div
-      class=" modal  d-block"
+      class="modal d-block"
       transition:fly={{ delay: 250, duration: 500 }}
       id="staticBackdrop"
       data-bs-backdrop="static"
@@ -17,9 +17,9 @@
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
    >
-      <div class="modal-dialog  modal-dialog-centered">
-         <div class="modal-content  bg-light ">
-            <div class="modal-body ">
+      <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content bg-light">
+            <div class="modal-body">
                <div class="row g-0 p-0 m-0">
                   <span class="text-dark col-10 fs-10">
                      {add_date.toLocaleDateString()}
@@ -130,4 +130,3 @@
       </div>
    </div>
 {/if}
-
