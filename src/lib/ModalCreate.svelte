@@ -2,7 +2,6 @@
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
    import { showCreate, setShowCreate } from "$lib/stores.js";
-   let title, price, note;
 </script>
 
 {#if $showCreate}
