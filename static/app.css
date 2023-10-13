@@ -1,11 +1,34 @@
 * {
     font-family: PT Sans, sans-serif;
 }
+.btn{
+    border-radius: 5px !important;
+}
+.form-control{
+    border-radius: 10px !important;
+border: 2px solid rgba(52, 52, 52, 0.25);
+
+
+}
 :root {
 --primary: rgb(255, 75, 75); 
 --secondary:rgb(27, 122, 152); 
 --dark: rgb(52, 52, 52);
 --light: rgb(225, 225, 225);
+}
+.header{
+  display: flex;
+padding-bottom: 0px;
+ align-items: center;
+gap: 24.655px;
+align-self: stretch;
+ }
+.text-crop{
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 2;  
+    width: 100%; 
+    white-space: nowrap;
+    overflow: hidden;
 }
 .bg-light {
     background: var(--light) !important;
@@ -83,7 +106,33 @@ body,#splash-screen {
 .fs-10 {
     font-size: 10px !important;
 }
+.header-title{
+    color: #FFF;
+    font-size: 65px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.975px;
+    text-transform: capitalize;     display: inline-block;
 
+}
+.header-subtitle{
+    color: #FFF;
+    font-size: 45px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.675px;
+    text-transform: capitalize;    display: inline-block;
+
+}
+.border-15 {
+    border-radius: 15px !important;
+}
+ 
+.fs-22 {
+    font-size: 22px !important;
+}
 .fs-13 {
     font-size: 13px !important;
 }
@@ -116,6 +165,30 @@ img {
     .fs-19 {
         font-size: 16px !important;
     }
+    .header-title{
+        color: #FFF;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        letter-spacing: 0.48px;
+        text-transform: capitalize;
+        width: 100%;
+        display: inline-block !important;
+    
+    }
+    .header-subtitle{
+        color: #FFF;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.33px;
+        text-transform: capitalize;
+        width: 100%; 
+        display: inline-block !important;
+    
+    }
     .modal-content{
         border-radius: 10px !important;
     
@@ -142,5 +215,21 @@ img {
      }  
      *{
         max-width: none !important;
+     }
+     .header{
+        text-align: center;
+        margin: auto;     
+        display: block;
+        width: 100%;
+     }
+     .main-header{
+        display: block !important;
+     }
+     .btn-custom{
+        width: 100%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display:  block !important;
      }
 }
