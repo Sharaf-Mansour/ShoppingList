@@ -12,7 +12,7 @@ export const actions = {
     create: async ({ cookies, request }) => {
         const { title, price, note } = Object.fromEntries(await request.formData());
          await sql`INSERT INTO CART (Title, Price, Note, Status, add_date) 
-        VALUES ('${title}', ${price}, '${note}', 1, now())`;
+        VALUES ('${title}', ${price || 0}, '${note}', 1, now())`;
 
     },
     undo: async ({ cookies, request }) => {
@@ -34,7 +34,7 @@ export const actions = {
     },
     update: async ({ cookies, request }) => {     
         const { id, title, price, note } = Object.fromEntries(await request.formData());
-        await sql`UPDATE CART SET Title = '${title}', Price = ${price}, Note = '${note}' WHERE ID = ${id}`;
+        await sql`UPDATE CART SET Title = '${title}', Price = ${price || 0}, Note = '${note}' WHERE ID = ${id}`;
 
     },
     delete: async ({ cookies, request }) => {
