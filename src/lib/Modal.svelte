@@ -1,7 +1,7 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { show, setShow, cart ,setShowUpdate} from "$lib/stores.js";
+   import { show, setShow, cart, setShowUpdate } from "$lib/stores.js";
    $: item = $cart;
    $: IsComplete = item.status == 0;
 </script>
@@ -32,7 +32,11 @@
                      </h1>
                   </span>
                   <div class="text-end align-content-end col-2">
-                     <button type="button" class="button" on:click={()=> setShowUpdate()}>
+                     <button
+                        type="button"
+                        class="button"
+                        on:click={() => setShowUpdate()}
+                     >
                         <svg
                            width="36"
                            height="36"
@@ -90,7 +94,9 @@
                      {#if !IsComplete}
                         <form method="POST" action="?/complete" use:enhance>
                            <input type="hidden" name="id" value={item.id} />
-                           <button class="btn fs-13 btn-lg btn-secondary"
+                           <button
+                              class="btn fs-13 btn-lg btn-secondary"
+                              on:click={() => setShow()}
                               >Mark As Completed</button
                            >
                            <button
@@ -105,7 +111,8 @@
                            <input type="hidden" name="id" value={item.id} />
                            <button
                               class="btn fs-13 btn-lg btn-primary"
-                              type="submit">Undo Note</button
+                              type="submit"
+                              on:click={() => setShow()}>Undo Note</button
                            >
                            <button
                               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
