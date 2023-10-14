@@ -15,6 +15,6 @@ export const setShowUpdate = () => {
     showUpdate.update(value => !value);
 }
 export const setShowDelete = () => {
-    showUpdate.update(value => !value)
+    showUpdate.update(value => value = false)
     showDelete.update(value => !value);
 }
