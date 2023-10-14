@@ -78,7 +78,6 @@
                      </button>
                   </div>
                </div>
-
                <p
                   class:middle-stroke={IsComplete}
                   class:disabled={IsComplete}
@@ -86,7 +85,6 @@
                >
                   {item.note}
                </p>
-
                <div class="row g-0">
                   <div
                      class="col align-content-start align-self-start test-start"

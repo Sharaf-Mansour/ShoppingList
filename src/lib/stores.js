@@ -11,7 +11,7 @@ export const setCart = (x) => {
 export const setShow = () => show.update(value => !value);
 export const setShowCreate = () => showCreate.update(value => !value);
 export const setShowUpdate = () => {
-    show.update(value => !value);
+    show.update(value => value = false);
     showUpdate.update(value => !value);
 }
 export const setShowDelete = () => {
