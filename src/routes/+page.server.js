@@ -13,34 +13,34 @@ export const actions = {
         const { title, price, note } = Object.fromEntries(await request.formData());
         await sql`INSERT INTO CART (Title, Price, Note, Status, add_date) 
         VALUES (${title}, ${price}, ${note}, 1, now())`;
-     
+
     },
     undo: async ({ cookies, request }) => {
-        const {id} = Object.fromEntries(await request.formData());
+        const { id } = Object.fromEntries(await request.formData());
 
         await sql`UPDATE CART SET Status = 1 WHERE ID = ${parseInt(id)}`;
-   
+
     },
-    complete:async ({ cookies, request }) => {
-        const {id} = Object.fromEntries(await request.formData());
+    complete: async ({ cookies, request }) => {
+        const { id } = Object.fromEntries(await request.formData());
 
         await sql`UPDATE CART SET Status = 0 WHERE ID = ${parseInt(id)}`;
-      
+
     },
     pin: async ({ cookies, request }) => {
-        const {id} = Object.fromEntries(await request.formData());
-        
+        const { id } = Object.fromEntries(await request.formData());
+
         await sql`UPDATE CART SET Status = 2 WHERE ID = ${parseInt(id)}`;
     },
     update: async ({ cookies, request }) => {
-        const { title, price, note } = Object.fromEntries(await request.formData());
-        await sql`UPDATE CART SET Title = ${title}, Price = ${price}, Note = ${note} WHERE ID = ${params.id}`;
-        
+        const { id, title, price, note } = Object.fromEntries(await request.formData());
+        await sql`UPDATE CART SET Title = ${title}, Price = ${price}, Note = ${note} WHERE ID = ${id}`;
+
     },
     delete: async ({ cookies, request }) => {
-        const {id} = Object.fromEntries(await request.formData());
+        const { id } = Object.fromEntries(await request.formData());
 
         await sql`DELETE FROM CART WHERE ID = ${id}`;
-       
+
     }
 }
