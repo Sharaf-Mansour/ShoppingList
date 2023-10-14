@@ -2,6 +2,7 @@
     import Card from "$lib/Card.svelte";
     import Modal from "$lib/Modal.svelte";
     import ModalCreate from "$lib/ModalCreate.svelte";
+    import ModalUpdate from "$lib/ModalUpdate.svelte";
     import { setShowCreate } from "$lib/stores.js";
     import { onMount } from "svelte";
     export let data;
@@ -86,3 +87,4 @@
 </div>
 <Modal />
 <ModalCreate />
+<ModalUpdate />

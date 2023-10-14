@@ -1,7 +1,7 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { show, setShow, cart } from "$lib/stores.js";
+   import { show, setShow, cart ,setShowUpdate} from "$lib/stores.js";
    $: item = $cart;
    $: IsComplete = item.status == 0;
 </script>
@@ -32,7 +32,7 @@
                      </h1>
                   </span>
                   <div class="text-end align-content-end col-2">
-                     <button type="submit" class="button">
+                     <button type="button" class="button" on:click={()=> setShowUpdate()}>
                         <svg
                            width="36"
                            height="36"
