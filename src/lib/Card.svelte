@@ -157,7 +157,7 @@
                 </div>
                 <div class="col-3 text-end">
                     <h2
-                        class="text-secondary fs-16"
+                        class="text-secondary fs-16 text-crop"
                         class:disabled={IsComplete}
                     >
                         {price} EGP

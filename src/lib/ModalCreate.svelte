@@ -37,6 +37,8 @@
                            id="price"
                            name="price"
                            placeholder="price"
+                           min = "0"
+                           max = "100000"
                            class="form-control bg-light"
                         />
                      </div>
