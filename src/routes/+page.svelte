@@ -30,7 +30,7 @@
         <span class="header-subtitle">{time}</span>
     </div>
     <button
-        class="btn btn-custom bg-light border-15 text-primary d-flex justify-content-end px-5 py-3 fs-22"
+        class="btn btn-custom bg-light border-15 text-primary d-flex justify-content-end px-5 align-items-center fs-22"
         on:click={() => setShowCreate()}
         >Create A new Note
         <svg
