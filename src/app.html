@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8" />
 	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
@@ -20,6 +21,7 @@
 			align-self: stretch;
 			color: #fff;
 		}
+
 		.h1 {
 			color: #FFF;
 			text-align: center;
@@ -32,25 +34,38 @@
 		}
 	</style>
 </head>
+
 <body data-sveltekit-preload-data="hover">
 	<div id="splash-screen">
-		<span>
-		</span>
-		<span>
-		</span>
-		<span>
-		</span>
-		<h1 class="h1">Shopping List</h1>
-		<img src="%sveltekit.assets%/splash.png" alt="">
+		<div id="loginForm" class="login-width justify-content-center align-items-center"
+			style="display: none; height: 100vh;">
+			<div class="text-center  login-width">
+				<h1 id="main-title" class="h1 ">Shopping List</h1>
+				<input type="password" id="password" class="p-3 rounded-2 form-control mb-3"
+					placeholder="Enter password">
+				<button id="loginBtn" class="btn btn-dark p-3 w-100">Login</button>
+			</div>
+		</div>
+		<img src="%sveltekit.assets%/splash.png" class="z-n1" alt="">
 	</div>
 	<div id="app" style="display: none">%sveltekit.body%</div>
 	<script>
 		window.addEventListener('load', () => {
 			setTimeout(() => {
+				//	document.getElementById('splash-screen').style.display = 'block';
+				//	document.getElementById('main-title').style.display = 'none';
+				document.getElementById('loginForm').style.display = 'flex';
+			}, 752);
+		});
+
+		document.getElementById('loginBtn').addEventListener('click', function () {
+			var password = document.getElementById('password').value;
+			if (password === '1015') {
 				document.getElementById('splash-screen').style.display = 'none';
 				document.getElementById('app').style.display = 'block';
-			}, 752); 
+			}
 		});
 	</script>
 </body>
+
 </html>

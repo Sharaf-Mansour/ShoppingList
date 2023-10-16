@@ -9,8 +9,6 @@
 .form-control {
     border-radius: 10px !important;
     border: 2px solid rgba(52, 52, 52, 0.25);
-
-
 }
 
 :root {
@@ -40,8 +38,7 @@
     background: var(--light) !important;
 }
 
-body,
-#splash-screen {
+body {
     background: var(--primary) !important;
     background-image: url('pc pattern.png') !important;
     background-repeat: repeat !important;
@@ -170,6 +167,10 @@ img {
     bottom: 0;
 }
 
+.login-width {
+    width: 55% !important;
+}
+
 @media screen and (max-width: 768px) {
     .fs-10 {
         font-size: 8px !important;
@@ -218,8 +219,7 @@ img {
 
     }
 
-    body,
-    #splash-screen {
+    body {
         background: var(--primary) !important;
         background-image: url('mobile pattern.png') !important;
         background-repeat: repeat !important;
@@ -263,5 +263,9 @@ img {
         margin-top: 10px;
         margin-bottom: 10px;
         display: block !important;
+    }
+
+    .login-width {
+        width: 90% !important;
     }
 }
