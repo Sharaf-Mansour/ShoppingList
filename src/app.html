@@ -16,7 +16,7 @@
 			flex-direction: column;
 			justify-content: flex-end;
 			align-items: center;
-			gap: 100px;
+			gap: 20px;
 			flex: 1 0 0;
 			align-self: stretch;
 			color: #fff;
@@ -36,11 +36,11 @@
 </head>
 
 <body data-sveltekit-preload-data="hover">
-	<div id="splash-screen">
-		<div id="loginForm" class="login-width justify-content-center align-items-center"
-			style="display: none; height: 100vh;">
-			<div class="text-center  login-width">
-				<h1 id="main-title" class="h1 ">Shopping List</h1>
+	<div id="splash-screen" class="justify-content-center align-items-center"
+	style="height: 100vh;">
+		<h1 id="main-title" class="h1 ">Shopping List</h1>
+		<div id="loginForm" style="display: none;"  	 class=" justify-content-center align-items-center login-width">
+			<div class="text-center  login-width" >
 				<input type="password" id="password" class="p-3 rounded-2 form-control mb-3"
 					placeholder="Enter password">
 				<button id="loginBtn" class="btn btn-dark p-3 w-100">Login</button>
@@ -52,8 +52,7 @@
 	<script>
 		window.addEventListener('load', () => {
 			setTimeout(() => {
-				//	document.getElementById('splash-screen').style.display = 'block';
-				//	document.getElementById('main-title').style.display = 'none';
+				document.getElementById('main-title').innerHTML= 'Weclome Back';
 				document.getElementById('loginForm').style.display = 'flex';
 			}, 752);
 		});
