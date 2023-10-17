@@ -17,7 +17,7 @@
    >
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
-            <div class="modal-body fs-19 fw-bold">
+            <div class="modal-body fs-16 ">
                <form method="POST" action="?/create" use:enhance>
                   <div class="row m-1 g-2">
                      <div class="col-9">

@@ -18,7 +18,7 @@
    >
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content">
-            <div class="modal-body fs-19 fw-bold">
+            <div class="modal-body fs-16">
                <form method="POST" action="?/update" use:enhance>
                   <input type="hidden" name="id" value={item.id} />
                   <div class="row m-1 g-2">
