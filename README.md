@@ -37,6 +37,9 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
+# Figma
+
+[https://www.figma.com/file/7hDYAqAXXOhkq0GI4eZkkc/TODO-APP?type=design&node-id=211-31545&mode=design&t=ZNkc0y25t1W1A5Jp-0](https://www.figma.com/file/7hDYAqAXXOhkq0GI4eZkkc/TODO-APP?type=design&node-id=211-31545&mode=design&t=ZNkc0y25t1W1A5Jp-0)
 
 # Application Flow
 ![image](https://github.com/Sharaf-Mansour/ShoppingList/assets/55330747/81dcdecc-08b9-4f0e-9d9b-be5fc88033d9)
