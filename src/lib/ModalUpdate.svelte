@@ -1,14 +1,21 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { cart,showUpdate, setShowUpdate,setShowDelete } from "$lib/stores.js";
-   $: item = $cart;
+   import { cubicIn } from "svelte/easing";
+
+   import {
+      getCart,
+      getShowUpdate,
+      setShowUpdate,
+      setShowDelete,
+   } from "$lib/index.svelte.js";
+   let item = $derived(getCart());
 </script>
 
-{#if $showUpdate}
+{#if getShowUpdate()}
    <div
       class="modal d-block"
-      transition:fly={{ delay: 250, duration: 500 }}
+      transition:fly={{  duration: 500, easing: cubicIn}}
       id="staticBackdrop"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -30,7 +37,7 @@
                            name="title"
                            placeholder="Note Title..."
                            class="form-control bg-light"
-                           value="{item.title}"
+                           value={item.title}
                         />
                      </div>
                      <div class="col-3">
@@ -40,10 +47,10 @@
                            id="price"
                            name="price"
                            placeholder="price"
-                           min = "0"
-                           max = "100000"
+                           min="0"
+                           max="100000"
                            class="form-control bg-light"
-                           value="{item.price}"
+                           value={item.price}
                         />
                      </div>
                   </div>
@@ -54,30 +61,30 @@
                         id="note"
                         placeholder="Note Details..."
                         class="form-control bg-light"
-                        value="{item.note}"
-                     />
+                        value={item.note}
+                     ></textarea>
                   </div>
                   <div class="row g-1 m-1">
                      <button
                         class="btn fs-13 col btn-lg btn-secondary"
                         type="submit"
-                        on:click={() => setShowUpdate()}>Save</button
+                        onclick={() => setShowUpdate()}>Save</button
                      >
                      <button
                         class="ms-2 fs-13 btn btn-lg col btn-outline-dark"
                         data-dismiss="modal"
                         type="button"
-                        on:click={() => setShowUpdate()}>Cancel</button
+                        onclick={() => setShowUpdate()}>Cancel</button
                      >
                   </div>
                   <div class="row g-1 m-1">
                      <button
                         class="btn fs-13 col btn-lg btn-primary"
-                        type="submit"
-                        on:click={() => setShowDelete()}>Delete</button
-                     >              
+                        type="button"
+                        onclick={() => setShowDelete()}>Delete</button
+                     >
                   </div>
-               </form>            
+               </form>
             </div>
          </div>
       </div>

@@ -1,13 +1,14 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { showCreate, setShowCreate } from "$lib/stores.js";
+   import { cubicIn } from "svelte/easing";
+   import { getShowCreate, setShowCreate } from "$lib/index.svelte.js";
 </script>
 
-{#if $showCreate}
+{#if getShowCreate()}
    <div
       class="modal d-block"
-      transition:fly={{ delay: 250, duration: 500 }}
+      transition:fly={{  duration: 750, easing: cubicIn}}
       id="staticBackdrop"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -49,20 +50,19 @@
                         name="note"
                         id="note"
                         placeholder="Note Details..."
-                        class="form-control bg-light"
-                     />
+                        class="form-control bg-light"></textarea>
                   </div>
                   <div class="row g-1 m-1">
                      <button
                         class="btn fs-13 col btn-lg btn-secondary"
                         type="submit"
-                        on:click={() => setShowCreate()}>Save</button
+                        onclick={() => setShowCreate()}>Save</button
                      >
                      <button
                         class="ms-2 fs-13 btn btn-lg col btn-outline-dark"
                         data-dismiss="modal"
                         type="button"
-                        on:click={() => setShowCreate()}>Cancel</button
+                        onclick={() => setShowCreate()}>Cancel</button
                      >
                   </div>
                </form>

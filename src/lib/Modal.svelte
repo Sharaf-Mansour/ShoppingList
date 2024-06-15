@@ -1,15 +1,16 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { show, setShow, cart, setShowUpdate } from "$lib/stores.js";
-   $: item = $cart;
-   $: IsComplete = item.status == 0;
+   import { cubicIn } from "svelte/easing";
+   import { getShow, setShow, getCart, setShowUpdate } from "$lib/index.svelte.js";
+   let item = $derived(getCart());
+   let IsComplete = $derived(item.status == 0);
 </script>
 
-{#if $show}
+{#if getShow()}
    <div
       class="modal d-block"
-      transition:fly={{ delay: 250, duration: 500 }}
+      transition:fly={{  duration: 750, easing: cubicIn}}
       id="staticBackdrop"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -20,7 +21,7 @@
       <div class="modal-dialog modal-dialog-centered">
          <div class="modal-content bg-light">
             <div class="modal-body">
-               <div class="row g-0 p-0 m-0">
+               <div class="row g-0 p-0 m-0">            
                   <span class="text-dark col-10 fs-10">
                      {item.add_date.toLocaleDateString()}
                      <h1
@@ -30,12 +31,12 @@
                      >
                         {item.title}
                      </h1>
-                  </span>
+                  </span>  
                   <div class="text-end align-content-end col-2">
                      <button
                         type="button"
                         class="button"
-                        on:click={() => setShowUpdate()}
+                        onclick={() => setShowUpdate()}
                      >
                         <svg
                            width="36"
@@ -94,14 +95,14 @@
                            <input type="hidden" name="id" value={item.id} />
                            <button
                               class="btn fs-13 btn-lg btn-secondary"
-                              on:click={() => setShow()}
+                              onclick={() => setShow()}
                               >Mark As Completed</button
                            >
                            <button
                               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
                               data-dismiss="modal"
                               type="button"
-                              on:click={() => setShow()}>Close Note</button
+                              onclick={() => setShow()}>Close Note</button
                            >
                         </form>
                      {:else}
@@ -110,13 +111,13 @@
                            <button
                               class="btn fs-13 btn-lg btn-primary"
                               type="submit"
-                              on:click={() => setShow()}>Undo Note</button
+                              onclick={() => setShow()}>Undo Note</button
                            >
                            <button
                               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
                               data-dismiss="modal"
                               type="button"
-                              on:click={() => setShow()}>Close Note</button
+                              onclick={() => setShow()}>Close Note</button
                            >
                         </form>
                      {/if}
