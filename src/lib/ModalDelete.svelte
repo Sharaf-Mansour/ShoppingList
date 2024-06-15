@@ -1,14 +1,15 @@
 <script>
    import { enhance } from "$app/forms";
    import { fly } from "svelte/transition";
-   import { cart, showDelete, setShowDelete } from "$lib/stores.js";
-   $: item = $cart;
+   import { cubicIn } from "svelte/easing";
+   import { getCart, getShowDelete, setShowDelete } from "$lib/index.svelte.js";
+   let item =  $derived(getCart());
 </script>
 
-{#if $showDelete}
+{#if getShowDelete()}
    <div
       class="modal d-block"
-      transition:fly={{ delay: 250, duration: 500 }}
+      transition:fly={{duration: 500, easing: cubicIn}}
       id="staticBackdrop"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -43,13 +44,13 @@
                      <button
                         class="btn fs-13 col btn-lg btn-primary"
                         type="submit"
-                        on:click={() => setShowDelete()}>Yes Delete</button
+                        onclick={() => setShowDelete()}>Yes Delete</button
                      >
                      <button
                         class="ms-2 fs-13 btn btn-lg col btn-outline-dark"
                         data-dismiss="modal"
                         type="button"
-                        on:click={() => setShowDelete()}>Cancel</button
+                        onclick={() => setShowDelete()}>Cancel</button
                      >
                   </div>
                </form>            

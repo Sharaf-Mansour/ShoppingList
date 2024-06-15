@@ -4,26 +4,28 @@
     import ModalCreate from "$lib/ModalCreate.svelte";
     import ModalUpdate from "$lib/ModalUpdate.svelte";
     import ModalDelete from "$lib/ModalDelete.svelte";
-    import { setShowCreate } from "$lib/stores.js";
-    import { onMount } from "svelte";
-    export let data;
-    let time;
-    onMount(() => {
+    import { setShowCreate } from "$lib/index.svelte.js";
+    import { flip } from 'svelte/animate';
+    import { cubicOut } from 'svelte/easing';
+
+    let { data } = $props();
+    let date = $state();
+    let time = $state();
+    let array = $state(data.cart);
+    $effect(() => {
         const intervalId = setInterval(() => {
+            array = data.cart.sort((b, a) => a.status - b.status);
+            date = new Date().toLocaleDateString("en-UK");
             time = new Date().toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
+                second: "2-digit",
             });
         }, 1000);
 
-        return () => {
-            clearInterval(intervalId);
-        };
+        return () => clearInterval(intervalId);
     });
-    $: array = data.cart.sort((b, a) => a.status - b.status);
-    let date = new Date().toLocaleDateString("en-UK");
 </script>
-
 <div class="m-3 main-header d-flex justify-content-between">
     <div class="header">
         <span class="header-title me-4">{date}</span>
@@ -31,7 +33,7 @@
     </div>
     <button
         class="btn btn-custom bg-light border-15 text-primary d-flex justify-content-end px-5 align-items-center fs-22"
-        on:click={() => setShowCreate()}
+        onclick={() => setShowCreate()}
         >Create A new Note
         <svg
             class="ms-2"
@@ -76,7 +78,10 @@
 </div>
 <div class="row m-2">
     {#each array as item (item.id)}
-        <Card
+    <div animate:flip={{ duration: 500, easing: cubicOut }}
+     class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 g-0">
+
+        <Card  
             add_date={item.add_date}
             id={item.id}
             title={item.title}
@@ -84,10 +89,10 @@
             note={item.note}
             status={item.status}
         />
+    </div>
     {/each}
 </div>
 <Modal />
 <ModalCreate />
 <ModalUpdate />
-<ModalDelete/>
-    
+<ModalDelete />
