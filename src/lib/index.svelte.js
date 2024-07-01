@@ -17,7 +17,6 @@ const showStore = {
     cartState.show.show = !cartState.show.show;
   },
   toggleShowCreate() {
-    console.log(cartState.show.showCreate);
     cartState.show.showCreate = !cartState.show.showCreate;
   },
   toggleShowUpdate() {
