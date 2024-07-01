@@ -1,17 +1,42 @@
-let cart = $state({});
-let show = $state(false);
-let showCreate = $state(false);
-let showUpdate = $state(false);
-let showDelete = $state(false);
+export const cartState = $state({
+  cart: {},
+  show: {
+    show: false,
+    showCreate: false,
+    showUpdate: false,
+    showDelete: false,
+  },
+});
 
-export const getCart = () => cart;
-export const getShow = () => show;
-export const getShowCreate = () => showCreate;
-export const getShowUpdate = () => showUpdate;
-export const getShowDelete = () => showDelete;
+const showStore = {
+  show: () => cartState.show.show,
+  showCreate: () => cartState.show.showCreate,
+  showUpdate: () => cartState.show.showUpdate,
+  showDelete: () => cartState.show.showDelete,
+  toggleShow() {
+    cartState.show.show = !cartState.show.show;
+  },
+  toggleShowCreate() {
+    console.log(cartState.show.showCreate);
+    cartState.show.showCreate = !cartState.show.showCreate;
+  },
+  toggleShowUpdate() {
+    cartState.show.show = false;
+    cartState.show.showUpdate = !cartState.show.showUpdate;
+  },
+  toggleShowDelete() {
+    cartState.show.showUpdate = false;
+    cartState.show.showDelete = !cartState.show.showDelete;
+  },
+};
 
-export const setCart = (x) => { cart = x; show = true;  }
-export const setShow = () => show = !show;
-export const setShowCreate = () => { showCreate = !showCreate;}
-export const setShowUpdate = () => { show = false; showUpdate = !showUpdate; }
-export const setShowDelete = () => { showUpdate = false; showDelete = !showDelete; }
+export const cartStore = {
+  setCart(x) {
+    cartState.cart = x;
+    cartState.show.show = true;
+  },
+  cart() {
+    return cartState.cart;
+  },
+  showStore,
+};
