@@ -21,7 +21,7 @@
       {#if status == 2}
         <form method="POST" action="?/undo" use:enhance>
           <input type="hidden" name="id" value={id} />
-          <button type="submit" class="button">
+          <button type="submit" class="button" aria-label="submit button">
             <svg
               width="27"
               height="27"
@@ -64,7 +64,7 @@
       {:else if status == 1}
         <form method="POST" action="?/pin" use:enhance>
           <input type="hidden" name="id" value={id} />
-          <button type="submit" class="button">
+          <button type="submit" class="button" aria-label="submit button">
             <svg
               width="27"
               height="27"

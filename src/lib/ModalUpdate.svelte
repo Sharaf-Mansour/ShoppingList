@@ -2,12 +2,12 @@
   import { enhance } from "$app/forms";
   import { fly } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
+  let { cartState = $bindable() } = $props();
 
-  import { cartStore } from "$lib/index.svelte.js";
-  let item = $derived(cartStore.cart());
+  let item = $derived(cartState.cart);
 </script>
 
-{#if cartStore.showStore.showUpdate()}
+{#if cartState.modal.showUpdate}
   <div
     class="modal d-block"
     transition:fly={{ duration: 500, easing: cubicIn }}
@@ -63,23 +63,29 @@
               <button
                 class="btn fs-13 col btn-lg btn-secondary"
                 type="submit"
-                onclick={() => cartStore.showStore.toggleShowUpdate()}
-                >Save</button
+                onclick={() => {
+                  cartState.modal.show = false;
+                  cartState.modal.showUpdate = !cartState.modal.showUpdate;
+                }}>Save</button
               >
               <button
                 class="ms-2 fs-13 btn btn-lg col btn-outline-dark"
                 data-dismiss="modal"
                 type="button"
-                onclick={() => cartStore.showStore.toggleShowUpdate()}
-                >Cancel</button
+                onclick={() => {
+                  cartState.modal.show = false;
+                  cartState.modal.showUpdate = !cartState.modal.showUpdate;
+                }}>Cancel</button
               >
             </div>
             <div class="row g-1 m-1">
               <button
                 class="btn fs-13 col btn-lg btn-primary"
                 type="button"
-                onclick={() => cartStore.showStore.toggleShowDelete()}
-                >Delete</button
+                onclick={() => {
+                  cartState.modal.showUpdate = false;
+                  cartState.modal.showDelete = !cartState.modal.showDelete;
+                }}>Delete</button
               >
             </div>
           </form>

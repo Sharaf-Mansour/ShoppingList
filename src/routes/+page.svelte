@@ -4,9 +4,18 @@
   import ModalCreate from "$lib/ModalCreate.svelte";
   import ModalUpdate from "$lib/ModalUpdate.svelte";
   import ModalDelete from "$lib/ModalDelete.svelte";
-  import { cartStore } from "$lib/index.svelte.js";
   import { flip } from "svelte/animate";
   import { cubicOut } from "svelte/easing";
+
+  let cartState = $state({
+    cart: {},
+    modal: {
+      show: false,
+      showCreate: false,
+      showUpdate: false,
+      showDelete: false,
+    },
+  });
 
   let { data } = $props();
   let date = $state();
@@ -34,7 +43,7 @@
   </div>
   <button
     class="btn btn-custom bg-light border-15 text-primary d-flex justify-content-end px-5 align-items-center fs-22"
-    onclick={() => cartStore.showStore.toggleShowCreate()}
+    onclick={() => (cartState.modal.showCreate = !cartState.modal.showCreate)}
     >Create A new Note
     <svg
       class="ms-2"
@@ -94,7 +103,7 @@
     </div>
   {/each}
 </div>
-<Modal />
-<ModalCreate />
-<ModalUpdate />
-<ModalDelete />
+<Modal bind:cartState />
+<ModalCreate bind:cartState />
+<ModalUpdate bind:cartState />
+<ModalDelete bind:cartState />

@@ -2,12 +2,12 @@
   import { enhance } from "$app/forms";
   import { fly } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
-  import { cartStore } from "$lib/index.svelte.js";
-  let item = $derived(cartStore.cart());
+  let { cartState = $bindable() } = $props();
+  let item = $derived(cartState.cart());
   let IsComplete = $derived(item.status == 0);
 </script>
 
-{#if cartStore.showStore.show()}
+{#if cartState.modal.show}
   <div
     class="modal d-block"
     transition:fly={{ duration: 750, easing: cubicIn }}
@@ -34,9 +34,13 @@
             </span>
             <div class="text-end align-content-end col-2">
               <button
+                aria-label="Close"
                 type="button"
                 class="button"
-                onclick={() => cartStore.showStore.toggleShowUpdate()}
+                onclick={() => {
+                  cartState.modal.show = false;
+                  cartState.modal.showUpdate = !cartState.show.showUpdate;
+                }}
               >
                 <svg
                   width="36"
@@ -93,14 +97,16 @@
                   <input type="hidden" name="id" value={item.id} />
                   <button
                     class="btn fs-13 btn-lg btn-secondary"
-                    onclick={() => cartStore.showStore.toggleShow()}
+                    onclick={() =>
+                      (cartState.modal.show = !cartState.modal.show)}
                     >Mark As Completed</button
                   >
                   <button
                     class="ms-2 fs-13 btn btn-lg btn-outline-dark"
                     data-dismiss="modal"
                     type="button"
-                    onclick={() => cartStore.showStore.toggleShow()}
+                    onclick={() =>
+                      (cartState.modal.show = !cartState.modal.show)}
                     >Close Note</button
                   >
                 </form>
@@ -110,14 +116,16 @@
                   <button
                     class="btn fs-13 btn-lg btn-primary"
                     type="submit"
-                    onclick={() => cartStore.showStore.togglehow()}
+                    onclick={() =>
+                      (cartState.modal.show = !cartState.modal.show)}
                     >Undo Note</button
                   >
                   <button
                     class="ms-2 fs-13 btn btn-lg btn-outline-dark"
                     data-dismiss="modal"
                     type="button"
-                    onclick={() => cartStore.showStore.toggleShow()}
+                    onclick={() =>
+                      (cartState.modal.show = !cartState.modal.show)}
                     >Close Note</button
                   >
                 </form>

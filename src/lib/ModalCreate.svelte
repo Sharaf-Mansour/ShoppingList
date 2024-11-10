@@ -2,10 +2,10 @@
   import { enhance } from "$app/forms";
   import { fly } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
-  import { cartStore } from "$lib/index.svelte.js";
+  let { cartState = $bindable() } = $props();
 </script>
 
-{#if cartStore.showStore.showCreate()}
+{#if cartState.modal.showCreate}
   <div
     class="modal d-block"
     transition:fly={{ duration: 750, easing: cubicIn }}
@@ -57,14 +57,16 @@
               <button
                 class="btn fs-13 col btn-lg btn-secondary"
                 type="submit"
-                onclick={() => cartStore.showStore.toggleShowCreate()}
+                onclick={() =>
+                  (cartState.modal.showCreate = !cartState.modal.showCreate)}
                 >Save</button
               >
               <button
                 class="ms-2 fs-13 btn btn-lg col btn-outline-dark"
                 data-dismiss="modal"
                 type="button"
-                onclick={() => cartStore.showStore.toggleShowCreate()}
+                onclick={() =>
+                  (cartState.modal.showCreate = !cartState.modal.showCreate)}
                 >Cancel</button
               >
             </div>
