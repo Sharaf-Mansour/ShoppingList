@@ -34,12 +34,12 @@
             </span>
             <div class="text-end align-content-end col-2">
               <button
-                aria-label="Close"
+                aria-label="update"
                 type="button"
                 class="button"
                 onclick={() => {
                   cartState.modal.show = false;
-                  cartState.modal.showUpdate = !cartState.show.showUpdate;
+                  cartState.modal.showUpdate = true;
                 }}
               >
                 <svg
