@@ -1,7 +1,15 @@
 <script>
   import { enhance } from "$app/forms";
-  import { cartStore } from "$lib/index.svelte.js";
-  let { id, add_date, title, price, note, status } = $props();
+
+  let {
+    id,
+    add_date,
+    title,
+    price,
+    note,
+    status,
+    cartState = $bindable(),
+  } = $props();
   let IsComplete = $derived(status == 0);
 </script>
 
@@ -120,15 +128,17 @@
             <button
               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
               type="button"
-              onclick={() =>
-                cartStore.setCart({
+              onclick={() => {
+                cartState.cart = {
                   id,
                   add_date,
                   title,
                   price,
                   note,
                   status,
-                })}>open Note</button
+                };
+                cartState.modal.show = true;
+              }}>open Note</button
             >
           </form>
         {:else}
@@ -140,15 +150,17 @@
             <button
               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
               type="button"
-              onclick={() =>
-                cartStore.setCart({
+              onclick={() => {
+                cartState.cart = {
                   id,
                   add_date,
                   title,
                   price,
                   note,
                   status,
-                })}>open Note</button
+                };
+                cartState.modal.show = true;
+              }}>open Note</button
             >
           </form>
         {/if}

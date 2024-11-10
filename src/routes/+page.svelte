@@ -99,6 +99,7 @@
         price={item.price}
         note={item.note}
         status={item.status}
+        bind:cartState
       />
     </div>
   {/each}
