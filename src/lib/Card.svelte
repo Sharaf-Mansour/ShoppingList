@@ -1,34 +1,25 @@
 <script>
   import { enhance } from "$app/forms";
-
-  let {
-    id,
-    add_date,
-    title,
-    price,
-    note,
-    status,
-    cartState = $bindable(),
-  } = $props();
-  let IsComplete = $derived(status == 0);
+  let { item, cartState = $bindable() } = $props();
+  let IsComplete = $derived(item.status == 0);
 </script>
 
 <div class="card bg-light m-2 p-4">
   <div class="row g-0 p-0 m-0">
     <span class="text-dark col-10 fs-10">
-      {add_date.toLocaleDateString("en-UK")}
+      {item.add_date.toLocaleDateString("en-UK")}
       <h1
         class:middle-stroke={IsComplete}
         class:disabled={IsComplete}
         class="text-primary fs-19 text-crop"
       >
-        {title}
+        {item.title}
       </h1>
     </span>
     <div class="text-end align-content-end col-2">
-      {#if status == 2}
+      {#if item.status == 2}
         <form method="POST" action="?/undo" use:enhance>
-          <input type="hidden" name="id" value={id} />
+          <input type="hidden" name="id" value={item.id} />
           <button type="submit" class="button" aria-label="submit button">
             <svg
               width="27"
@@ -69,9 +60,9 @@
             </svg>
           </button>
         </form>
-      {:else if status == 1}
+      {:else if item.status == 1}
         <form method="POST" action="?/pin" use:enhance>
-          <input type="hidden" name="id" value={id} />
+          <input type="hidden" name="id" value={item.id} />
           <button type="submit" class="button" aria-label="submit button">
             <svg
               width="27"
@@ -113,7 +104,7 @@
       class:disabled={IsComplete}
       class="text-dark fs-16 text-crop"
     >
-      {note}
+      {item.note}
     </p>
   </div>
   <div>
@@ -121,7 +112,7 @@
       <div class="col">
         {#if !IsComplete}
           <form method="POST" action="?/complete" use:enhance>
-            <input type="hidden" name="id" value={id} />
+            <input type="hidden" name="id" value={item.id} />
             <button class="btn fs-13 btn-lg btn-secondary"
               >Mark As Completed</button
             >
@@ -129,21 +120,14 @@
               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
               type="button"
               onclick={() => {
-                cartState.cart = {
-                  id,
-                  add_date,
-                  title,
-                  price,
-                  note,
-                  status,
-                };
+                cartState.cart = item;
                 cartState.modal.show = true;
               }}>open Note</button
             >
           </form>
         {:else}
           <form method="POST" action="?/undo" use:enhance>
-            <input type="hidden" name="id" value={id} />
+            <input type="hidden" name="id" value={item.id} />
             <button class="btn fs-13 btn-lg btn-primary" type="submit"
               >Undo Note</button
             >
@@ -151,14 +135,7 @@
               class="ms-2 fs-13 btn btn-lg btn-outline-dark"
               type="button"
               onclick={() => {
-                cartState.cart = {
-                  id,
-                  add_date,
-                  title,
-                  price,
-                  note,
-                  status,
-                };
+                cartState.cart = item;
                 cartState.modal.show = true;
               }}>open Note</button
             >
@@ -167,7 +144,7 @@
       </div>
       <div class="col-3 text-end">
         <h2 class="text-secondary fs-16 text-crop" class:disabled={IsComplete}>
-          {price} EGP
+          {item.price} EGP
         </h2>
       </div>
     </div>

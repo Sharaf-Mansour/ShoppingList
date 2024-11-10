@@ -88,15 +88,7 @@
       animate:flip={{ duration: 500, easing: cubicOut }}
       class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-4 g-0"
     >
-      <Card
-        add_date={item.add_date}
-        id={item.id}
-        title={item.title}
-        price={item.price}
-        note={item.note}
-        status={item.status}
-        bind:cartState
-      />
+      <Card {item} bind:cartState />
     </div>
   {/each}
 </div>
