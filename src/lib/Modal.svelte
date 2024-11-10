@@ -3,7 +3,7 @@
   import { fly } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
   let { cartState = $bindable() } = $props();
-  let item = $derived(cartState.cart());
+  let item = $derived(cartState.cart);
   let IsComplete = $derived(item.status == 0);
 </script>
 
