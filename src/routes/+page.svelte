@@ -1,9 +1,5 @@
 <script>
-  import Card from "$lib/Card.svelte";
-  import Modal from "$lib/Modal.svelte";
-  import ModalCreate from "$lib/ModalCreate.svelte";
-  import ModalUpdate from "$lib/ModalUpdate.svelte";
-  import ModalDelete from "$lib/ModalDelete.svelte";
+  import { Card, Modal, ModalCreate, ModalUpdate, ModalDelete } from "$lib";
   import { flip } from "svelte/animate";
   import { cubicOut } from "svelte/easing";
 
